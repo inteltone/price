@@ -1,5 +1,7 @@
 <template>
-
+	<p v-for="(item,index) in obj" :key="index">
+		<p v-for="el in item">{{ el.price }}</p>
+	</p>
 	<!-- ----------------------------------------------------------------- -->
 
   <div class="choice block">
