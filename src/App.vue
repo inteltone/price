@@ -94,6 +94,7 @@ export default {
 			showModal: false,
 			popupTitle: '',
 			popupDesc: '',
+      obj:[],
 		}
 	},
 	computed: {
@@ -115,7 +116,7 @@ export default {
 					if (elem.picked === item.name) {
 						sum += item.price
 					}
-				}				
+				}
 			}
 			return sum
 		}
@@ -135,15 +136,24 @@ export default {
 		handleRemoveItem(name) {
 			console.log(name)
 			for (let elem of this.marketing) {
-				for (let item of elem.items) {					
+				for (let item of elem.items) {
 					if (item.name === name) {
 						elem.picked = false
 					}
 				}
 			}
 		}
-	}
+	},
+  mounted(){
+    fetch('https://headless.bearlogics.host/wp-json/wp/v2/service_seo/')
+    .then(response => response.json())
+    .then(data => {
+      this.obj=data
+      console.log(data)
+    })
+  }
 }
+
 </script>
 
 
